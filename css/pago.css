@@ -25,11 +25,13 @@
 
 .conatiner-compras {
     width: 48%;
-    /* border: 1px solid black; */
-    justify-content: center;
+    border: 1px solid black;
+    height: 550px;
+    */ justify-content: center;
     align-items: center;
     text-align: center;
     padding: 10px;
+    background-color: rgb(106, 111, 116);
 }
 
 .sub-titulos {
