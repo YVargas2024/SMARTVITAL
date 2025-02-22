@@ -7,7 +7,7 @@ navLinks.forEach(link => {
 
         switch (currentPath) {
             case "index.html":
-                link.style.backgroundColor = "#bfb1b3";
+                link.style.backgroundColor = "#90a3b5";
                 link.style.color = "#ffffff";
                 break;
             case "perfil.html":
@@ -19,7 +19,7 @@ navLinks.forEach(link => {
                 link.style.color = "black";
                 break;
             case "productos.html":
-                link.style.backgroundColor = "#ffffff";
+                link.style.backgroundColor = "#f4f4f4";
                 link.style.color = "black";
                 break;
             case "nosotros.html":
@@ -30,14 +30,7 @@ navLinks.forEach(link => {
                 link.style.backgroundColor = "#FFFFFF";
                 link.style.color = "black";
                 break;
-            case "contactenos.html":
-                link.style.backgroundColor = "#FFFFFF";
-                link.style.color = "black";
-                break;
-            case "inicioSesion.html":
-                link.style.backgroundColor = "#F4F4F400";
-                link.style.color = "#F4F4F400";
-                break;
+
 
             default:
                 link.style.backgroundColor = "#FFFFFF";
