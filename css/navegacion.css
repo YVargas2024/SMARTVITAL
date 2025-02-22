@@ -11,19 +11,19 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #000044;
 }
 
 
 /* --------------- VARIABLES GLOBALES --------------- */
 
 :root {
-    --primary-color: #647E92;
-    --Nav-Color: #AF6894;
-    --secondary-color: #455970;
-    --background-color: #b08ea21e;
-    --card-background: #ffffff;
-    --text-color: #333333;
+    --primary-color: #030487;
+    --Nav-Color: #020376;
+    --secondary-color: #020266;
+    --background-color: #010155;
+    --card-background: #000044;
+    --text-color: #ffffff;
     --spacing-base: 1rem;
     --border-radius: 10px;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -53,8 +53,8 @@ body {
     font-family: "Poppins", serif;
     font-weight: 300;
     font-size: 16px;
-    background-color: #AF6894;
-    background: linear-gradient(45deg, #af6894, #db758f, #ffaa71, #fc8b81);
+    background-color: #020376;
+    background: linear-gradient(45deg, #020376, #030487, #010155, #000044);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -99,7 +99,7 @@ body {
 
 .aBarra:hover {
     background-color: white;
-    color: #B08EA2;
+    color: #030487;
     transform: scale(1.1);
 }
 
@@ -110,7 +110,7 @@ body {
     margin-top: 40px;
     padding-bottom: 50px;
     background-color: white;
-    color: #B08EA2;
+    color: #030487;
 }
 
 
