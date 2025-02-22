@@ -1,7 +1,7 @@
 /* Estilo general para el footer */
 
 .footer {
-    background: linear-gradient(45deg, #af6894, #db758f, #ffaa71, #fc8b81);
+    background: linear-gradient(45deg, #020376, #030487, #010155, #000044);
     padding: 10px 0;
     display: flex;
     justify-content: center;
@@ -24,7 +24,7 @@
 }
 
 .footer-logo-img {
-    max-height: 40px;
+    max-height: 120px;
     /* Ajustamos la altura del logo */
 }
 
