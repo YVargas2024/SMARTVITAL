@@ -2,11 +2,12 @@ let contadorProductos = localStorage.getItem("canProductos");
 const notyf = new Notyf();
 
 function agregarArticulos() {
-
     let valorCompra = document.getElementById('valorCompra');
     let iva = document.getElementById('iva');
     let totalCompra = document.getElementById('TotalCompra');
     let descuentoTotal = document.getElementById('descuentoTotal');
+    let valorTotalProductos = document.getElementById('valorTotalProductos');
+    let totalConIva = document.getElementById('totalConIva');
 
     if (contadorProductos > 0) {
 
@@ -16,14 +17,12 @@ function agregarArticulos() {
         for (let i = 0; i < localStorage.length; i++) {
             const clave = localStorage.key(i);
 
-            // If para obtener el número del producto 
+            // If para obtener el número del producto
             if (clave.slice(0, 3) === "img") {
                 let numeroProducto = parseInt(clave[3]);
                 if (clave.length > 4) {
                     numeroProducto = parseInt(clave.slice(3, 5));
                 }
-
-                console.log(numeroProducto);
 
                 // Crear <div> que contiene dos div img y detalles
                 const containerCards = document.createElement('div');
@@ -77,13 +76,15 @@ function agregarArticulos() {
 
                 // Calcular el precio total de los artículos
                 sumatoriaValorCompra += (parseFloat(localStorage.getItem('precio' + numeroProducto)) * 1000);
-
-                // Sumar los precios
-                valorCompra.textContent = "Valor = $ " + sumatoriaValorCompra;
             }
         }
 
-        iva.textContent = "IVA (19% ) = $ " + (sumatoriaValorCompra * 0.19).toFixed(2);
+        // Mostrar el valor total de productos
+        valorTotalProductos.textContent = "Valor Total Productos =  " + formatMoney(sumatoriaValorCompra);
+
+        // Calcular IVA
+        let ivaTotal = sumatoriaValorCompra * 0.19;
+        iva.textContent = "IVA (19%) =  " + formatMoney(ivaTotal);
 
         // Aplicar descuento según la cantidad de productos en el carrito
         let descuento = 0;
@@ -95,19 +96,25 @@ function agregarArticulos() {
             descuento = sumatoriaValorCompra * 0.10; // 10% de descuento
         }
 
-        // Mostrar el descuento total en el HTML
-        descuentoTotal.textContent = "Descuento = $ " + descuento.toFixed(2); // Aquí se muestra el descuento
+        // Mostrar el descuento total
+        descuentoTotal.textContent = "Descuento =  " + formatMoney(descuento);
+
+        // Total con IVA
+        const totalConIvaValue = sumatoriaValorCompra + ivaTotal;
+        totalConIva.textContent = "Total con IVA =  " + formatMoney(totalConIvaValue);
 
         // Actualizar el total con el descuento aplicado
-        const totalConDescuento = sumatoriaValorCompra - descuento;
-        totalCompra.textContent = "Total = $ " + (totalConDescuento + (totalConDescuento * 0.19)).toFixed(2);
+        const totalConDescuento = totalConIvaValue - descuento;
+        totalCompra.textContent = "Total a Pagar =  " + formatMoney(totalConDescuento);
 
     } else {
         notyf.success("No hay productos en el carrito");
         valorCompra.textContent = "Valor = 0";
-        iva.textContent = "IVA (19% ) = 0";
+        iva.textContent = "IVA (19%) = 0";
         totalCompra.textContent = "Total = 0";
-        descuentoTotal.textContent = "Descuento = $0"; // Si no hay productos, el descuento es 0
+        descuentoTotal.textContent = "Descuento = 0";
+        valorTotalProductos.textContent = "Valor Total Productos = $ 0";
+        totalConIva.textContent = "Total con IVA =  0";
 
         const containerCarroVacio = document.createElement('div');
         containerCarroVacio.id = "container-carro-vacio";
@@ -118,6 +125,11 @@ function agregarArticulos() {
         document.getElementById('conatiner-articulos').appendChild(containerCarroVacio);
     }
 }
+
+function formatMoney(amount) {
+    return amount.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+}
+
 agregarArticulos();
 
 function actualizar() {
